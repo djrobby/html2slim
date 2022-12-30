@@ -9,6 +9,7 @@ export interface IOptions {
   save: boolean;
   parser: "html" | "vue";
   classesAtEnd: boolean;
+  attrWrapper: "curly" | "round" | "square";
 }
 export interface ILocalStorageParams {
   html: string;

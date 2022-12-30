@@ -12,13 +12,14 @@ const defaultOptions: IOptions = {
   attrComma: false,
   bodyLess: false,
   classesAtEnd: false,
-  doubleQuotes: false,
-  encode: false,
+  doubleQuotes: true,
+  encode: true,
   indent: "spaces",
-  inlineCSS: false,
+  inlineCSS: true,
   nSpaces: 2,
   parser: "html",
   save: false,
+  attrWrapper: "square",
 };
 
 export const collectOptions = (form: HTMLFormElement) => ({
@@ -31,7 +32,7 @@ export const collectOptions = (form: HTMLFormElement) => ({
   ),
 });
 
-const KEY_STORE = "html2pug_params";
+const KEY_STORE = "html2slim_params";
 
 export function saveToStorage(data: ILocalStorageParams) {
   window.localStorage.setItem(KEY_STORE, JSON.stringify(data));
@@ -58,7 +59,9 @@ export function setParamsFromStorage(
     if (el instanceof RadioNodeList && typeof value === "string") {
       el.value = value;
     }
-
+    if (el instanceof HTMLSelectElement && typeof value === "string") {
+      el.value = value;
+    }
     if (el instanceof HTMLInputElement && typeof value === "number") {
       el.value = `${value}`;
     }

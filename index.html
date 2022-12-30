@@ -1,71 +1,73 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en" class="dark">
   <head>
     <meta charset="utf-8" />
-    <title>html2pug - convert your html code to pug</title>
-    <meta name="description" content="Convert HTML to PUG" />
+    <title>html2slim - convert your HTML to Slim</title>
+    <meta name="description" content="Convert HTML to SLIM" />
     <meta
       name="author"
-      content="dimensi, https://github.com/dimensi/html2pug"
+      content="djrobby, https://github.com/djrobby/html2slim"
     />
-    <meta name="yandex-verification" content="7fa7e0458bf116e2" />
-    <meta name="url" content="http://html2pug.now.sh/" />
-    <meta itemprop="name" content="html2pug" />
+    <meta name="url" content="http://html2slim.now.sh/" />
+    <meta itemprop="name" content="html2slim" />
     <meta
       itemprop="description"
-      content="html2pug - convert your html code to pug"
+      content="html2slim - convert your html code to slim"
     />
     <!-- Favicons-->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
-    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="manifest" href="/site.webmanifest" />
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
     <meta name="theme-color" content="#ffffff" />
     <meta
       property="og:title"
-      content="html2pug - convert your html code to pug"
+      content="html2slim - convert your html code to slim"
     />
-    <meta property="og:site_name" content="html2pug" />
+    <meta property="og:site_name" content="html2slim" />
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="stylesheet" href="./src/main.css" />
   </head>
 
-  <body class="h-screen flex flex-col">
+  <body
+    class="h-screen flex flex-col text-neutral-100 dark:text-gray-300 bg-white dark:bg-[#313D43]"
+  >
     <!-- #region header -->
-    <header class="bg-brown flex-none">
-      <div class="mx-auto px-6 text-white py-4">
+    <header class="bg-[#131F25] flex-none">
+      <div class="mx-auto px-6 py-4">
         <h1
           itemscope
           itemtype="http://schema.org/Organization"
-          class="text-3xl font-semibold mb-3"
+          class="text-3xl font-semibold mb-1"
         >
-          <a href="http://html2pug.now.sh/" itemprop="url"
-            ><span itemprop="name">html2pug</span></a
+          <a href="http://html2slim.now.sh/" itemprop="url"
+            ><span itemprop="name">html2slim</span></a
           >
         </h1>
-        <p class="text-sm">HTML snippet to a Pug snippet converter</p>
+        <p class="text-sm">HTML snippet to a Slim snippet converter</p>
       </div>
     </header>
     <!-- #endregion -->
 
-    <form class="pt-12 flex mx-auto px-6 items-stretch w-full flex-1">
+    <form class="p-6 pt-4 flex mx-auto items-stretch w-full flex-1">
       <!-- #region settings -->
-      <div class="w-80 flex-none mr-10">
-        <fieldset class="border rounded-3xl p-6 pt-3 border-gray-300 relative">
-          <legend class="text-xl font-semibold text-gray-800">Settings</legend>
+      <div class="w-80 flex-none mr-6">
+        <fieldset
+          class="border rounded-3xl p-6 pt-3 border-gray-500 relative shadow-xl"
+        >
+          <legend class="text-xl font-semibold">Settings</legend>
           <!-- #region checkboxes -->
-          <div class="flex flex-wrap mb-6">
+          <div class="flex flex-wrap mb-2">
             <div class="mb-2 flex items-center">
               <input
                 id="bodyLess"
                 type="checkbox"
                 name="bodyLess"
-                class="w-5 h-5 border border-gray-300 rounded-sm mr-2"
+                class="w-5 h-5 rounded-sm mr-2 accent-rose-400"
+                checked
               />
-              <label
-                for="bodyLess"
-                class="text-sm text-gray-600 select-none cursor-pointer"
+              <label for="bodyLess" class="text-sm select-none cursor-pointer"
                 >Don't wrap into html > body</label
               >
             </div>
@@ -74,12 +76,9 @@
                 id="attrComma"
                 type="checkbox"
                 name="attrComma"
-                class="w-5 h-5 border border-gray-300 rounded-sm mr-2"
-                checked
+                class="w-5 h-5 border accent-rose-400 rounded-sm mr-2"
               />
-              <label
-                for="attrComma"
-                class="text-sm text-gray-600 select-none cursor-pointer"
+              <label for="attrComma" class="text-sm select-none cursor-pointer"
                 >Commas in attributes</label
               >
             </div>
@@ -88,12 +87,10 @@
                 id="encode"
                 type="checkbox"
                 name="encode"
-                class="w-5 h-5 border border-gray-300 rounded-sm mr-2"
+                class="w-5 h-5 border accent-rose-400 rounded-sm mr-2"
                 checked
               />
-              <label
-                for="encode"
-                class="text-sm text-gray-600 select-none cursor-pointer"
+              <label for="encode" class="text-sm select-none cursor-pointer"
                 >Encode html characters.</label
               >
             </div>
@@ -102,47 +99,61 @@
                 id="doubleQuotes"
                 type="checkbox"
                 name="doubleQuotes"
-                class="w-5 h-5 border border-gray-300 rounded-sm mr-2"
+                class="w-5 h-5 border accent-rose-400 rounded-sm mr-2"
                 checked
               />
               <label
                 for="doubleQuotes"
-                class="text-sm text-gray-600 select-none cursor-pointer"
+                class="text-sm select-none cursor-pointer"
                 >Use double quotes for attributes</label
               >
             </div>
-            <div class="mb-2 flex items-center">
+            <!-- <div class="mb-2 flex items-center">
               <input
                 id="inlineCSS"
                 type="checkbox"
                 name="inlineCSS"
-                class="w-5 h-5 border border-gray-300 rounded-sm mr-2"
+                class="w-5 h-5 border accent-rose-400 rounded-sm mr-2"
+                checked
               />
-              <label
-                for="inlineCSS"
-                class="text-sm text-gray-600 select-none cursor-pointer"
+              <label for="inlineCSS" class="text-sm select-none cursor-pointer"
                 >Place all classes in class attribute</label
               >
-            </div>
+            </div> -->
             <div class="mb-2 flex items-center">
               <input
                 id="classesAtEnd"
                 type="checkbox"
                 name="classesAtEnd"
-                class="w-5 h-5 border border-gray-300 rounded-sm mr-2"
+                class="w-5 h-5 border accent-rose-400 rounded-sm mr-2"
               />
               <label
                 for="classesAtEnd"
-                class="text-sm text-gray-600 select-none cursor-pointer"
+                class="text-sm select-none cursor-pointer"
                 >Place all classes after attributes</label
               >
             </div>
           </div>
           <!-- #endregion -->
+          <!-- #region attrWrapper -->
+          <p class="text-base">Parser</p>
+          <hr class="my-3 mt-2 h-px bg-gray-200 border-0 dark:bg-gray-600" />
+          <div class="flex flex-col w-full p-0.5 relative mb-3">
+            <select
+              id="attrWrapper"
+              name="attrWrapper"
+              class="bg-gray-50 border border-gray-300 dark:border-gray-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-[#313D43] dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            >
+              <option disabled>Select attribute wrapper...</option>
+              <option value="square" selected>Square [ ... ]</option>
+              <option value="round">Round ( ... )</option>
+              <option value="curly">Curly { ... }</option>
+            </select>
+          </div>
+          <!-- #endregion -->
           <!-- #region parser -->
-          <p class="text-base mb-2 text-gray-600">Parser</p>
           <div
-            class="w-full border-gray-300 border rounded-[40px] p-0.5 flex relative mb-3"
+            class="w-full border-gray-300 dark:border-gray-500 border rounded-[40px] p-0.5 flex relative mb-3"
           >
             <input
               type="radio"
@@ -160,16 +171,16 @@
               class="sr-only"
             />
             <div
-              class="toggle absolute top-[2px] left-[2px] bottom-[2px] border rounded-[40px] w-6/12 pointer-events-none border-black/50 transition"
+              class="toggle absolute top-[2px] left-[2px] bottom-[2px] rounded-[40px] w-6/12 pointer-events-none border-2 border-rose-400 transition"
             ></div>
             <label
               for="html-parser"
-              class="text-sm text-gray-700 flex-1 text-center py-3 border rounded-[40px] border-transparent cursor-pointer transition-colors"
+              class="text-sm flex-1 text-center py-3 border rounded-[40px] border-transparent cursor-pointer transition-colors"
               >HTML</label
             >
             <label
               for="vue"
-              class="text-sm text-gray-700 flex-1 text-center py-3 border rounded-[40px] border-transparent cursor-pointer transition-colors"
+              class="text-sm flex-1 text-center py-3 border rounded-[40px] border-transparent cursor-pointer transition-colors"
               >Vue</label
             >
           </div>
@@ -191,19 +202,19 @@
           />
           <!-- #region toggler -->
           <div
-            class="w-full border-gray-300 border rounded-[40px] p-0.5 flex relative"
+            class="w-full border-gray-300 dark:border-gray-500 border rounded-[40px] p-0.5 flex relative"
           >
             <div
-              class="toggle absolute top-[2px] left-[2px] bottom-[2px] border rounded-[40px] w-6/12 pointer-events-none border-black/50 transition"
+              class="toggle absolute top-[2px] left-[2px] bottom-[2px] rounded-[40px] w-6/12 pointer-events-none border-2 border-rose-400 transition"
             ></div>
             <label
               for="spaces"
-              class="text-sm text-gray-700 flex-1 text-center py-3 border rounded-[40px] border-transparent cursor-pointer transition-colors"
+              class="text-sm flex-1 text-center py-3 border rounded-[40px] border-transparent cursor-pointer transition-colors"
               >Spaces</label
             >
             <label
               for="tabs"
-              class="text-sm text-gray-700 flex-1 text-center py-3 border rounded-[40px] border-transparent cursor-pointer transition-colors"
+              class="text-sm flex-1 text-center py-3 border rounded-[40px] border-transparent cursor-pointer transition-colors"
               >Tabs</label
             >
           </div>
@@ -215,35 +226,30 @@
               inputmode="numeric"
               name="nSpaces"
               id="nSpaces"
-              class="appearance-none text-sm text-gray-600 border border-gray-300 rounded-[4px] w-12 h-8 text-center mr-3"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-1 py-2 mr-2 text-center dark:bg-[#313D43] dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-12"
               value="2"
             />
-            <label for="nSpaces" class="text-sm text-gray-600">Spaces</label>
+            <label for="nSpaces" class="text-sm">Spaces</label>
           </div>
 
           <!-- #region switch -->
           <div class="flex items-center w-full mt-6">
-            <label for="save" class="flex items-center cursor-pointer">
-              <div class="relative">
-                <input type="checkbox" id="save" name="save" class="sr-only" />
-                <div
-                  class="block bg-black/5 w-12 h-7 rounded-full border boder-black/5"
-                ></div>
-                <div
-                  class="dot absolute left-1 top-1 bg-white w-5 h-5 rounded-full transition"
-                ></div>
-              </div>
-              <div class="ml-3 text-gray-600 text-sm select-none">
-                Save settings
-              </div>
-            </label>
+            <input
+              id="save"
+              type="checkbox"
+              name="save"
+              class="w-5 h-5 border accent-rose-400 rounded-sm mr-2"
+            />
+            <label for="save" class="text-sm select-none cursor-pointer"
+              >Save settings on submit</label
+            >
           </div>
           <!-- #endregion -->
         </fieldset>
 
         <div class="w-full text-center">
           <button
-            class="bg-brown rounded-3xl text-xl text-white font-semibold py-4 w-48 mt-4 flex-none"
+            class="bg-rose-400 rounded-3xl text-xl text-white font-semibold py-4 w-full mt-4 flex-none shadow hover:scale-[102%] transform duration-150"
             type="submit"
           >
             Convert
@@ -251,37 +257,39 @@
         </div>
 
         <!-- #region footer -->
-        <footer class="bg-gray-100 rounded-3xl p-6 w-80 mx-auto mt-8">
-          <p class="text-sm text-gray-700">
+        <footer
+          class="bg-[#263238] text-gray-400 border border-gray-600 rounded-3xl p-6 w-80 mx-auto mt-8 shadow"
+        >
+          <p class="text-s">
             Made by
             <a
-              href="https://github.com/dimensi/html2pug"
-              class="underline hover:text-brown transition-colors"
-              >dimensi</a
+              href="https://github.com/djrobby/html2slim"
+              class="underline hover:text-[#00A4EA] transition-colors"
+              >djrobby</a
             >
           </p>
-          <p class="text-sm text-gray-700">
+          <p class="text-sm">
             using
             <a
               href="https://vercel.com/"
-              class="underline hover:text-brown transition-colors"
+              class="underline hover:text-[#00A4EA] transition-colors"
               >vercel</a
             >,
             <a
               href="https://github.com/mykolaharmash/hyntax"
-              class="underline hover:text-brown transition-colors"
+              class="underline hover:text-[#00A4EA] transition-colors"
               >hyntax</a
             >,
             <a
               href="https://github.com/vuejs/vue-next/tree/master/packages/compiler-dom"
-              class="underline hover:text-brown transition-colors"
+              class="underline hover:text-[#00A4EA] transition-colors"
             >
               @vue/compiler-dom
             </a>
           </p>
           <a
-            href="http://buymeacoffee.com/dimensi"
-            class="flex items-center text-base mt-4 rounded-3xl hover:text-brown transition-colors"
+            href="http://buymeacoffee.com/djrobby"
+            class="flex items-center text-base mt-4 rounded-3xl hover:text-[#00A4EA] transition-colors"
           >
             <svg
               width="32"
@@ -293,7 +301,7 @@
             >
               <path
                 d="M2.13189 32.4368L18.2306 36.7505C18.618 36.8543 19.0299 36.815 19.3906 36.6398C19.7513 36.4645 20.0368 36.165 20.1945 35.7963L28.8853 15.4489L30.7093 15.9377L31.572 12.7179L29.3471 12.1218L28.0586 5.82887C27.997 5.52554 27.852 5.24542 27.6399 5.02002C27.4278 4.79461 27.157 4.63286 26.858 4.55297L10.7592 0.239316C10.149 0.0758283 9.49972 0.271089 9.0798 0.743505L4.81907 5.54951L2.59422 4.95336L1.73149 8.17311L3.55548 8.66185L0.908221 30.6285C0.860481 31.0267 0.957934 31.4288 1.1827 31.761C1.40747 32.0931 1.74448 32.3331 2.13189 32.4368ZM23.6486 19.2222L6.20397 14.5479L6.80743 9.53321L25.6317 14.5772L23.6486 19.2222ZM4.39038 29.5911L4.99384 24.5764L19.6807 28.5117L17.696 33.1563L4.39038 29.5911ZM10.8914 3.72565L25.0003 7.50614L25.7475 11.1573L8.41875 6.51404L10.8914 3.72565Z"
-                fill="#A86454"
+                fill="#00A4EA"
               />
             </svg>
             Buy me book or a coffie?
@@ -307,58 +315,30 @@
       <div class="flex-1" style="width: calc(100% - 360px)">
         <div class="flex h-full justify-between">
           <div class="flex flex-col w-6/12">
-            <h3 class="text-xl font-semibold text-gray-700 mb-6 flex-none">
-              HTML
-            </h3>
-            <div id="html" class="flex-1 border-b-gray-500 border-b"></div>
+            <h3 class="text-xl font-semibold mb-2 flex-none">HTML</h3>
+            <div id="html" class="flex-1"></div>
           </div>
           <div class="flex flex-col w-6/12">
-            <h3 class="text-xl font-semibold text-gray-700 mb-6 flex-none">
-              PUG
-            </h3>
-            <div id="pug" class="flex-1 border-b-gray-500 border-b"></div>
+            <div class="flex flex-row items-center justify-between mb-2">
+              <h3 class="text-xl font-semibold flex-none">SLIM</h3>
+              <div>
+                <p id="copyCodeMessage" class="text-xs hidden">
+                  Content copied!
+                </p>
+                <a
+                  id="copyCode"
+                  class="px-3 py-1 hover:bg-rose-400 border border-gray-500 hover:text-[#172329] hover:border-[#172329] rounded-xl text-[0.7em] shadow"
+                  href="#"
+                  >Copy Result</a
+                >
+              </div>
+            </div>
+            <div id="slim" class="flex-1 border-l border-gray-700"></div>
           </div>
         </div>
       </div>
     </form>
 
     <script src="./src/index.ts" type="module"></script>
-
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
-      (function (m, e, t, r, i, k, a) {
-        m[i] =
-          m[i] ||
-          function () {
-            (m[i].a = m[i].a || []).push(arguments);
-          };
-        m[i].l = 1 * new Date();
-        (k = e.createElement(t)),
-          (a = e.getElementsByTagName(t)[0]),
-          (k.async = 1),
-          (k.src = r),
-          a.parentNode.insertBefore(k, a);
-      })(
-        window,
-        document,
-        "script",
-        "https://mc.yandex.ru/metrika/tag.js",
-        "ym"
-      );
-      ym(52878802, "init", {
-        clickmap: true,
-        trackLinks: true,
-        accurateTrackBounce: true,
-      });
-    </script>
-    <noscript
-      ><div>
-        <img
-          src="https://mc.yandex.ru/watch/52878802"
-          style="position: absolute; left: -9999px"
-          alt=""
-        /></div
-    ></noscript>
-    <!-- /Yandex.Metrika counter -->
   </body>
 </html>
